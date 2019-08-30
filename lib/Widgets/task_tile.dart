@@ -24,10 +24,3 @@ class TaskTile extends StatelessWidget {
     );
   }
 }
-
-//void toggleCheck(bool checkBoxState) { //Callback that passes input to checkBox state widget
-//  setState(() {
-//    isChecked = checkBoxState;
-//  });
-//}
-
