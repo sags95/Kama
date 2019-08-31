@@ -16,17 +16,19 @@ class _TasksListState extends State<TasksList> {
       builder: (context, taskData, child) { //Provides taskData instead of provider.of. Consumer listens for changes from task_data
         return ListView.builder(
           itemBuilder: (context, index) {
-
+            final task = taskData.tasks[index];
             return TaskTile(
-                taskTitle: taskData.tasks[index].name, //
-                isChecked: taskData.tasks[index].isDone,
+                taskTitle: task.name,
+                isChecked: task.isDone,
                 checkBoxCallback: (bool checkBoxState) {
-//              setState(() {
-//                Provider.of<TaskData>(context).tasks[index].toggleDone();
-//              });
-                });
+                  taskData.updateTask(task);
+                },
+              deleteTask: (){
+                taskData.deleteTask(task);
+              },
+            );
           },
-          itemCount: taskData.taskCount, //Tells builder how many tasks to build (as many in tasks)
+          itemCount: taskData.taskCount,
         );
       },
     );

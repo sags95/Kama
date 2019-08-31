@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:todoey_flutter/models/task_data.dart';
 
 class AddTaskScreen extends StatelessWidget {
   final Function addTaskCall;
@@ -50,7 +52,7 @@ class AddTaskScreen extends StatelessWidget {
               ),
               FlatButton(
                 onPressed: () {
-                  addTaskCall(taskTitle);
+                  Provider.of<TaskData>(context).addTask(taskTitle); //Add task to changeNotifier
                   Navigator.pop(context);
                 },
                 color: Colors.lightBlueAccent,
