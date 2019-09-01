@@ -2,14 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todoey_flutter/models/task_data.dart';
 
-class AddTaskScreen extends StatelessWidget {
-  final Function addTaskCall;
+String taskTitle;
 
+class AddTaskScreen extends StatefulWidget {
+  final Function addTaskCall;
   AddTaskScreen(this.addTaskCall);
 
   @override
+  _AddTaskScreenState createState() => _AddTaskScreenState();
+}
+
+class _AddTaskScreenState extends State<AddTaskScreen> {
+  @override
   Widget build(BuildContext context) {
-    String taskTitle;
+
 
     return Container(
       color: Color(0xFF757575),
@@ -38,6 +44,7 @@ class AddTaskScreen extends StatelessWidget {
                 autofocus: true,
                 onChanged: (val){
                    taskTitle = val;
+                   print(taskTitle);
                 },
                 decoration: InputDecoration(
                   hintText: 'Enter your task',
@@ -52,6 +59,7 @@ class AddTaskScreen extends StatelessWidget {
               ),
               FlatButton(
                 onPressed: () {
+                  print(taskTitle);
                   Provider.of<TaskData>(context).addTask(taskTitle); //Add task to changeNotifier
                   Navigator.pop(context);
                 },
