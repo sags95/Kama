@@ -9,13 +9,13 @@ class TasksScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.lightBlueAccent,
+      backgroundColor: Color(0xff121212),
       floatingActionButton: FloatingActionButton(
         onPressed: (){
           showModalBottomSheet(context: context, builder: (context) => AddTaskScreen((taskTitle){
           }));
         },
-        backgroundColor: Colors.lightBlueAccent,
+        backgroundColor: Color(0xff6200EE),
         child: Icon(Icons.add),
       ),
       body: Column(
@@ -27,23 +27,23 @@ class TasksScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 CircleAvatar(
-                  backgroundColor: Colors.white,
+                  backgroundColor: Color(0xff1F1b24),
                   radius: 30,
                   child: Icon(
                     Icons.list,
                     size: 30,
-                    color: Colors.lightBlueAccent,
+                    color: Color(0xff6200EE),
                   ),
                 ),
                 SizedBox(
                   height: 10.0,
                 ),
                 Text(
-                  'Todoey',
+                  'Kama',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 50,
-                    fontWeight: FontWeight.w700,
+                    fontWeight: FontWeight.w700
                   ),
                 ),
                 Text(
@@ -60,7 +60,7 @@ class TasksScreen extends StatelessWidget {
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 20),
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: Color(0xff1F1b24),
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(20),
                   topRight: Radius.circular(20),

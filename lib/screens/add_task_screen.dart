@@ -44,7 +44,6 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                 autofocus: true,
                 onChanged: (val){
                    taskTitle = val;
-                   print(taskTitle);
                 },
                 decoration: InputDecoration(
                   hintText: 'Enter your task',
@@ -59,7 +58,6 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
               ),
               FlatButton(
                 onPressed: () {
-                  print(taskTitle);
                   Provider.of<TaskData>(context).addTask(taskTitle); //Add task to changeNotifier
                   Navigator.pop(context);
                 },
