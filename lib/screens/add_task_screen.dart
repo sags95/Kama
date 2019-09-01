@@ -18,10 +18,10 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
 
 
     return Container(
-      color: Color(0xFF757575),
+      color: Color(0xFF121212),
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Color(0xff242424),
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(20),
             topRight: Radius.circular(20),
@@ -36,8 +36,10 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                 'Add Task',
                 textAlign: TextAlign.center,
                 style: TextStyle(
+                  fontFamily: 'WorkSans',
+                  fontWeight: FontWeight.w300,
                   fontSize: 30,
-                  color: Colors.lightBlueAccent,
+                  color: Color(0xffBB86FC),
                 ),
               ),
               TextField(
@@ -45,12 +47,15 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                 onChanged: (val){
                    taskTitle = val;
                 },
+                style: TextStyle(
+                  color: Colors.white
+                ),
                 decoration: InputDecoration(
-                  hintText: 'Enter your task',
+                 // hintText: 'Enter your task',
                   hintStyle: TextStyle(
-                    color: Colors.black45,
+                    color: Colors.white,
                   ),
-                  fillColor: Colors.lightBlueAccent,
+                  fillColor: Color(0xffBB86FC),
                 ),
               ),
               SizedBox(
@@ -61,10 +66,15 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                   Provider.of<TaskData>(context).addTask(taskTitle); //Add task to changeNotifier
                   Navigator.pop(context);
                 },
-                color: Colors.lightBlueAccent,
+                color: Color(0xff6200EE),
                 child: Text(
                   'Add',
-                  style: TextStyle(fontSize: 20, color: Colors.white),
+                  style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.white,
+                    fontFamily: 'WorkSans',
+                    fontWeight: FontWeight.w500
+                  ),
                 ),
               )
             ],

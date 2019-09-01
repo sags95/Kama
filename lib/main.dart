@@ -12,6 +12,7 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider( //root provider
       builder: (context) => TaskData(), //Providing task data to all children which want to listen for chagnges
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
           fontFamily: 'WorkSans'
         ),
