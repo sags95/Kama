@@ -35,6 +35,8 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
+  assets:
+    - images/clip-list-is-empty.png
   fonts:
     - family: WorkSans
       fonts:
