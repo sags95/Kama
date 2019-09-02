@@ -1,10 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:todoey_flutter/Widgets/rounded_btn.dart';
-import 'package:todoey_flutter/screens/login_screen.dart';
-import 'package:todoey_flutter/screens/reg_screen.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:todoey_flutter/Widgets/rounded_icon_btn.dart';
+import 'package:todoey_flutter/screens/tasks_screen.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-class WelcomeScreen extends StatelessWidget {
+
+
+class WelcomeScreen extends StatefulWidget {
   static const String id = 'welcome_screen';
+
+  @override
+  _WelcomeScreenState createState() => _WelcomeScreenState();
+}
+
+class _WelcomeScreenState extends State<WelcomeScreen> {
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
+
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -41,15 +54,20 @@ class WelcomeScreen extends StatelessWidget {
               SizedBox(
                 height: 48,
               ),
-              RoundedButton(
+              RoundedIconButton(
                 btnColor: Color(0xff6200EE),
-                title: 'Sign In',
-                fun: () => Navigator.pushNamed(context, LoginScreen.id),
+                title: 'Sign in with Google',
+                fun: (){
+
+                  Navigator.pushNamed(context, TasksScreen.id);
+                },
+                icon: FontAwesomeIcons.google,
               ),
-              RoundedButton(
+              RoundedIconButton(
                 btnColor: Color(0xff8a00ee),
-                title: 'Create Account',
-                fun: () => Navigator.pushNamed(context, RegScreen.id),
+                title: 'Sign in with Facebook',
+                fun: (){},
+                icon: FontAwesomeIcons.facebook,
               ),
               Expanded(
                 child: Image.asset(
