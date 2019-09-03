@@ -5,16 +5,13 @@ import 'package:todoey_flutter/screens/tasks_screen.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-/*
-TODO:
-- Firebase iOS install
-- GoogleSignIn iOS install
-- firebase auth iOS?
-
- */
-
 class WelcomeScreen extends StatefulWidget {
-  final GoogleSignIn _googleSignIn = GoogleSignIn();
+  final GoogleSignIn _googleSignIn = GoogleSignIn(
+    scopes: [
+      'email',
+      'profile'
+    ]
+  );
   final FirebaseAuth _auth = FirebaseAuth.instance;
   static const String id = 'welcome_screen';
 
@@ -78,8 +75,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 btnColor: Color(0xff6200EE),
                 title: 'Sign in with Google',
                 fun: (){
-                  widget._handleSignIn();
-                  // Navigator.pushNamed(context, TasksScreen.id);
+                  widget._handleSignIn().then((user){
+                   Navigator.pushNamed(context, TasksScreen.id);
+                  });
                 },
                 icon: FontAwesomeIcons.google,
               ),
