@@ -6,12 +6,14 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class WelcomeScreen extends StatefulWidget {
+
   final GoogleSignIn _googleSignIn = GoogleSignIn(
     scopes: [
       'email',
       'profile'
     ]
   );
+  
   final FirebaseAuth _auth = FirebaseAuth.instance;
   static const String id = 'welcome_screen';
 
@@ -76,7 +78,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 title: 'Sign in with Google',
                 fun: (){
                   widget._handleSignIn().then((user){
-                   Navigator.pushNamed(context, TasksScreen.id);
+                    //TODO: Load screen rather than push so that user cannot return to home screen by going back
+                   Navigator.pushReplacementNamed(context, TasksScreen.id);
                   });
                 },
                 icon: FontAwesomeIcons.google,
