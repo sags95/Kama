@@ -3,7 +3,6 @@ import 'package:todoey_flutter/Widgets/tasks_list.dart';
 import 'package:todoey_flutter/models/task_data.dart';
 import 'package:todoey_flutter/screens/add_task_screen.dart';
 import 'package:provider/provider.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 class TasksScreen extends StatelessWidget {
   static const String id = 'task_screen';

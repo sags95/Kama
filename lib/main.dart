@@ -3,34 +3,11 @@ import 'package:provider/provider.dart';
 import 'package:todoey_flutter/models/task_data.dart';
 import 'package:todoey_flutter/screens/tasks_screen.dart';
 import 'package:todoey_flutter/screens/welcome_screen.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'screens/splash_screen.dart';
 
 void main () => runApp(MyApp());
 
-//TODO: get auth status and render proper screen
-
-class MyApp extends StatefulWidget {
-
-
-  @override
-  _MyAppState createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  bool isUser = false;
-
-  @override
-   initState() {
-     FirebaseAuth.instance.currentUser().then((curUser){
-       if (curUser != null){
-         isUser = true;
-         Navigator.pushReplacementNamed(context, TasksScreen.id);
-       } else {
-         Navigator.pushReplacementNamed(context, WelcomeScreen.id);
-       }
-     });
-    super.initState();
-  }
+class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
@@ -44,10 +21,11 @@ class _MyAppState extends State<MyApp> {
           accentColor: Color(0xff6200EE),
           primaryColor: Color(0xff8a00ee),
         ),
-        initialRoute: _MyAppState().isUser ? TasksScreen.id : WelcomeScreen.id,
+        initialRoute: SplashScreen.id,
         routes: {
           TasksScreen.id: (context) => TasksScreen(),
           WelcomeScreen.id: (context) => WelcomeScreen(),
+          SplashScreen.id: (context) => SplashScreen(),
         },
       ),
     );

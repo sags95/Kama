@@ -6,18 +6,17 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class WelcomeScreen extends StatefulWidget {
-
-  final GoogleSignIn _googleSignIn = GoogleSignIn(
-    scopes: [
-      'email',
-      'profile'
-    ]
-  );
-  
-  final FirebaseAuth _auth = FirebaseAuth.instance;
   static const String id = 'welcome_screen';
 
-  Future<FirebaseUser> _handleSignIn() async {
+  final GoogleSignIn _googleSignIn = GoogleSignIn(
+      scopes: [
+        'email',
+        'profile'
+      ]
+  );
+
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  Future<FirebaseUser> _googleSignInAuth() async {
     final GoogleSignInAccount googleUser = await _googleSignIn.signIn();
     final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
 
@@ -36,7 +35,6 @@ class WelcomeScreen extends StatefulWidget {
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
-
 
   @override
   Widget build(BuildContext context) {
@@ -77,10 +75,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 btnColor: Color(0xff6200EE),
                 title: 'Sign in with Google',
                 fun: (){
-                  widget._handleSignIn().then((user){
-                    //TODO: Load screen rather than push so that user cannot return to home screen by going back
-                   Navigator.pushReplacementNamed(context, TasksScreen.id);
-                  });
+                widget._googleSignInAuth().then((user){
+                 Navigator.pushReplacementNamed(context, TasksScreen.id);
+                });
                 },
                 icon: FontAwesomeIcons.google,
               ),
