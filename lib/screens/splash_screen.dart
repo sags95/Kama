@@ -15,8 +15,8 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
 
-    FirebaseAuth.instance.currentUser().then((curUser){
-      if (curUser != null){
+    FirebaseAuth.instance.currentUser().then((curUser) {
+      if (curUser != null) {
         Navigator.pushReplacementNamed(context, TasksScreen.id);
       } else {
         Navigator.pushReplacementNamed(context, WelcomeScreen.id);

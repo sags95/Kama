@@ -5,14 +5,15 @@ import 'package:todoey_flutter/screens/tasks_screen.dart';
 import 'package:todoey_flutter/screens/welcome_screen.dart';
 import 'screens/splash_screen.dart';
 
-void main () => runApp(MyApp());
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider( //root provider
-      builder: (context) => TaskData(), //Providing task data to all children which want to listen for changes
+    return ChangeNotifierProvider(
+      //root provider
+      builder: (context) =>
+          TaskData(), //Providing task data to all children which want to listen for changes
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(

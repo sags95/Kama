@@ -8,24 +8,21 @@ import 'package:firebase_auth/firebase_auth.dart';
 class WelcomeScreen extends StatefulWidget {
   static const String id = 'welcome_screen';
 
-  final GoogleSignIn _googleSignIn = GoogleSignIn(
-      scopes: [
-        'email',
-        'profile'
-      ]
-  );
+  final GoogleSignIn _googleSignIn = GoogleSignIn(scopes: ['email', 'profile']);
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
   Future<FirebaseUser> _googleSignInAuth() async {
     final GoogleSignInAccount googleUser = await _googleSignIn.signIn();
-    final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
+    final GoogleSignInAuthentication googleAuth =
+        await googleUser.authentication;
 
     final AuthCredential credential = GoogleAuthProvider.getCredential(
       accessToken: googleAuth.accessToken,
       idToken: googleAuth.idToken,
     );
 
-    final FirebaseUser user = (await _auth.signInWithCredential(credential)).user;
+    final FirebaseUser user =
+        (await _auth.signInWithCredential(credential)).user;
     print("signed in " + user.displayName);
     return user;
   }
@@ -35,7 +32,6 @@ class WelcomeScreen extends StatefulWidget {
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,11 +58,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 'Todo lists, simplified',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 16,
-                  fontFamily: 'WorkSans',
-                  fontWeight: FontWeight.w400
-                ),
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontFamily: 'WorkSans',
+                    fontWeight: FontWeight.w400),
               ),
               SizedBox(
                 height: 48,
@@ -74,17 +69,19 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               RoundedIconButton(
                 btnColor: Color(0xff6200EE),
                 title: 'Sign in with Google',
-                fun: (){
-                widget._googleSignInAuth().then((user){
-                 Navigator.pushReplacementNamed(context, TasksScreen.id);
-                });
+                fun: () {
+                  widget._googleSignInAuth().then((user) {
+                    //TODO: init firestore fields
+
+                    Navigator.pushReplacementNamed(context, TasksScreen.id);
+                  });
                 },
                 icon: FontAwesomeIcons.google,
               ),
               RoundedIconButton(
                 btnColor: Color(0xff8a00ee),
                 title: 'Sign in with Facebook',
-                fun: (){},
+                fun: () {},
                 icon: FontAwesomeIcons.facebook,
               ),
               Expanded(
