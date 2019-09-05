@@ -72,8 +72,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 fun: () {
                   widget._googleSignInAuth().then((user) {
                     //TODO: init firestore fields
-
-                    Navigator.pushReplacementNamed(context, TasksScreen.id);
+                    Navigator.pushReplacement(context, MaterialPageRoute(
+                      builder: (context) => TasksScreen(loggedUser: user, photoUrl: user.photoUrl)
+                    ));
                   });
                 },
                 icon: FontAwesomeIcons.google,

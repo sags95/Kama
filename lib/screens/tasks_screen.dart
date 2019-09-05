@@ -6,11 +6,14 @@ import 'package:provider/provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:todoey_flutter/screens/welcome_screen.dart';
 
-FirebaseUser loggedUser; //current user
-String photoUrl;
+
 
 class TasksScreen extends StatefulWidget {
   static const String id = 'task_screen';
+  final FirebaseUser loggedUser;
+  final String photoUrl;
+
+  TasksScreen({this.loggedUser, this.photoUrl});
 
   @override
   _TasksScreenState createState() => _TasksScreenState();
@@ -19,27 +22,27 @@ class TasksScreen extends StatefulWidget {
 class _TasksScreenState extends State<TasksScreen> {
   final _auth = FirebaseAuth.instance;
 
-  @override
-  void initState() {
-    super.initState();
-    getCurUser();
+//  @override
+//  void initState() {
+//    super.initState();
+//    getCurUser();
+//
+//  }
 
-  }
-
-  void getCurUser() async {
-    try {
-      final user = await _auth.currentUser(); //null if no current user
-      if (user != null) {
-        setState(() {
-          loggedUser = user;
-          photoUrl = loggedUser.photoUrl;
-        });
-        print(photoUrl);
-      }
-    } catch (e) {
-      print(e);
-    }
-  }
+//  void getCurUser() async {
+//    try {
+//      final user = await _auth.currentUser(); //null if no current user
+//      if (user != null) {
+//        setState(() {
+//          loggedUser = user;
+//          photoUrl = loggedUser.photoUrl;
+//        });
+//        print(photoUrl);
+//      }
+//    } catch (e) {
+//      print(e);
+//    }
+//  }
 
   @override
   Widget build(BuildContext context) {
@@ -95,15 +98,19 @@ class _TasksScreenState extends State<TasksScreen> {
                         itemBuilder: (BuildContext context) => <PopupMenuEntry>[
                           const PopupMenuItem(
                             value: true,
-                            child: Text(
-                              'Sign Out',
-                            ),
+                            child: ListTile(
+                              dense: true,
+                              title: Text(
+                                'Sign Out'
+                              ),
+
+                            )
 
                           ),
                         ],
                         child: CircleAvatar(
                           radius: 28,
-                          backgroundImage: NetworkImage(loggedUser.photoUrl),
+                          backgroundImage: NetworkImage(widget.photoUrl),
                         ),
                       ),
                     ],
