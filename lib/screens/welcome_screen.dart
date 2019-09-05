@@ -5,12 +5,11 @@ import 'package:todoey_flutter/screens/tasks_screen.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-class WelcomeScreen extends StatefulWidget {
+class WelcomeScreen extends StatelessWidget {
   static const String id = 'welcome_screen';
-
   final GoogleSignIn _googleSignIn = GoogleSignIn(scopes: ['email', 'profile']);
-
   final FirebaseAuth _auth = FirebaseAuth.instance;
+
   Future<FirebaseUser> _googleSignInAuth() async {
     final GoogleSignInAccount googleUser = await _googleSignIn.signIn();
     final GoogleSignInAuthentication googleAuth =
@@ -27,11 +26,6 @@ class WelcomeScreen extends StatefulWidget {
     return user;
   }
 
-  @override
-  _WelcomeScreenState createState() => _WelcomeScreenState();
-}
-
-class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,7 +64,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 btnColor: Color(0xff6200EE),
                 title: 'Sign in with Google',
                 fun: () {
-                  widget._googleSignInAuth().then((user) {
+                  _googleSignInAuth().then((user) {
                     //TODO: init firestore fields
                     Navigator.pushReplacement(context, MaterialPageRoute(
                       builder: (context) => TasksScreen(loggedUser: user, photoUrl: user.photoUrl)

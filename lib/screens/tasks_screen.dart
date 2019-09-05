@@ -7,42 +7,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:todoey_flutter/screens/welcome_screen.dart';
 
 
-
-class TasksScreen extends StatefulWidget {
+class TasksScreen extends StatelessWidget {
   static const String id = 'task_screen';
   final FirebaseUser loggedUser;
   final String photoUrl;
-
-  TasksScreen({this.loggedUser, this.photoUrl});
-
-  @override
-  _TasksScreenState createState() => _TasksScreenState();
-}
-
-class _TasksScreenState extends State<TasksScreen> {
   final _auth = FirebaseAuth.instance;
 
-//  @override
-//  void initState() {
-//    super.initState();
-//    getCurUser();
-//
-//  }
-
-//  void getCurUser() async {
-//    try {
-//      final user = await _auth.currentUser(); //null if no current user
-//      if (user != null) {
-//        setState(() {
-//          loggedUser = user;
-//          photoUrl = loggedUser.photoUrl;
-//        });
-//        print(photoUrl);
-//      }
-//    } catch (e) {
-//      print(e);
-//    }
-//  }
+  TasksScreen({this.loggedUser, this.photoUrl});
 
   @override
   Widget build(BuildContext context) {
@@ -103,14 +74,12 @@ class _TasksScreenState extends State<TasksScreen> {
                               title: Text(
                                 'Sign Out'
                               ),
-
-                            )
-
+                            ),
                           ),
                         ],
                         child: CircleAvatar(
                           radius: 28,
-                          backgroundImage: NetworkImage(widget.photoUrl),
+                          backgroundImage: NetworkImage(photoUrl),
                         ),
                       ),
                     ],
