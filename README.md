@@ -1,16 +1,24 @@
 # Kama
-A simple todo list application made with Flutter
+An elegant todo list application built with Flutter. Currently in active development.
 
 ## Overview
-Works for both iOS and Android.
 
-<div align="center">
-<image src="images/Simulator Screen Shot - iPhone X - 2019-09-01 at 23.31.23.png" width="350">
+
+<div align="middle">
+
+<img src="images/screenshots/Simulator Screen Shot - iPhone X - 2019-10-01 at 23.55.30.png" width="350" style="margin-right:20px"/> <img src="images/screenshots/Simulator Screen Shot - iPhone X - 2019-10-01 at 23.56.58.png" width="350"/>
 </div>
 
-Future additions include:
-- Adding Firebase cloud firestore
-- Social sign in (Google/Facebook)
+Current features include:
+- Social sign in using Google/Facebook
+- Task saving using Cloud Firestore (in-progress)
+
+Future features include:
+- Task lists
+- Task tracking data
 
 ## Build instructions
-As of now, you'll need Flutter SDK, along with either latest Android or iOS SDK or a capable device.
+As of now, you'll need the latest Flutter SDK, along with either an Android/iOS SDK or a capable device.
+- `git clone`
+- Open `pubspec.yaml` and click `get dependencies`
+- Run on emulator or device

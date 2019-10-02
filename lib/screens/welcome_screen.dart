@@ -24,6 +24,8 @@ class WelcomeScreen extends StatelessWidget {
         (await _auth.signInWithCredential(credential)).user;
     print("signed in " + user.displayName);
     return user;
+
+    //TODO: init firestore fields
   }
 
   @override
@@ -65,7 +67,6 @@ class WelcomeScreen extends StatelessWidget {
                 title: 'Sign in with Google',
                 fun: () {
                   _googleSignInAuth().then((user) {
-                    //TODO: init firestore fields
                     Navigator.pushReplacement(context, MaterialPageRoute(
                       builder: (context) => TasksScreen(loggedUser: user, photoUrl: user.photoUrl)
                     ));
